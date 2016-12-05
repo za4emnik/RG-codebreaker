@@ -1,0 +1,30 @@
+--- !ruby/object:CodebreakerGem::Game
+response:
+- "+"
+- "+"
+- "+"
+- "+"
+attempts: 2
+secret_code: '3224'
+input: '3224'
+name: Max
+--- !ruby/object:CodebreakerGem::Game
+response:
+- "+"
+- "+"
+- "+"
+- "+"
+attempts: 2
+secret_code: '5232'
+input: '5232'
+name: Max2
+--- !ruby/object:CodebreakerGem::Game
+response:
+- "+"
+- "+"
+- "+"
+- "+"
+attempts: 2
+secret_code: '2113'
+input: '2113'
+name: Max
