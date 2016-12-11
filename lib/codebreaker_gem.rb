@@ -2,7 +2,6 @@ require 'codebreaker_gem/version'
 require 'codebreaker_gem/codebreaker'
 require 'codebreaker_gem/loader'
 require 'yaml'
-require 'pp'
 
 module CodebreakerGem
   class Game
