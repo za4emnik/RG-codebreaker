@@ -10,6 +10,6 @@ require "codebreaker_gem"
 # require "pry"
 # Pry.start
 require "irb"
-CodebreakerGem::Game.new.start
+Codebreaker::Console.new.run
 
 IRB.start
