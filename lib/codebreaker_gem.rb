@@ -25,22 +25,15 @@ module CodebreakerGem
     end
 
     def check
-      minuses = []
       code, guess = @secret_code.split('').zip(@guess.split('')).delete_if { |item| item[0] == item[1] }.transpose
       if !code || !guess
-        pluses = ['+'] * @secret_code.length
+        @response = ['+'] * @secret_code.length
       else
-        pluses = ['+'] * (@secret_code.length - code.length)
-        code.each do |item|
-          if guess.include?(item)
-            code[code.index(item)] = nil
-            guess[guess.index(item)] = nil
-            minuses << '-'
-          end
-        end
+        @response = ['+'] * (@secret_code.length - code.length)
+        @response.concat(get_minuses(code, guess))
       end
+      @response = @response.join.to_s
       @attempts -= 1
-      @response = pluses.concat(minuses).join.to_s
     end
 
     def get_hint
@@ -55,6 +48,21 @@ module CodebreakerGem
       scores[:attempts] = ATTEMPTS - @attempts
       scores[:secret_code] = @secret_code
       scores
+    end
+
+
+    private
+
+    def get_minuses(code, guess)
+      minuses = []
+      code.each do |item|
+        if guess.include?(item)
+          code[code.index(item)] = nil
+          guess[guess.index(item)] = nil
+          minuses << '-'
+        end
+      end
+      minuses
     end
 
   end
