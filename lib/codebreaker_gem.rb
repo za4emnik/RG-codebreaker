@@ -25,6 +25,7 @@ module CodebreakerGem
     end
 
     def check
+      return @response = '+' * @secret_code.length if @secret_code == @guess
       code, guess = @secret_code.split('').zip(@guess.split('')).delete_if { |item| item[0] == item[1] }.transpose
       if !code || !guess
         @response = ['+'] * @secret_code.length
@@ -56,14 +57,12 @@ module CodebreakerGem
     def get_minuses(code, guess)
       minuses = []
       code.each do |item|
-        if guess.include?(item)
+        next unless guess.include?(item)
           code[code.index(item)] = nil
           guess[guess.index(item)] = nil
           minuses << '-'
-        end
       end
       minuses
     end
-
   end
 end
